@@ -15,12 +15,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ClientPlayerInteractionManager.class)
 public class PlayerInteractBlockMixin {
-
-    @Inject(method = "interactBlock", at = @At("RETURN"))
-    private void onBlockPlaceSuccess(ClientPlayerEntity player, Hand hand, BlockHitResult hitResult, CallbackInfoReturnable<ActionResult> cir) {
-        RandomBlockPlacementClient clientInstance = RandomBlockPlacementClient.getInstance();
-        if (clientInstance != null) {
-            clientInstance.handleBlockPlacement(MinecraftClient.getInstance().player);
-        }
+    @Inject(method="interactBlock", at=@At(value="RETURN",
+            target="Lnet/minecraft/client/network/ClientPlayerInteractionManager;sendSequencedPacket(Lnet/minecraft/client/world/ClientWorld;Lnet/minecraft/client/network/SequencedPacketCreator;)V"))
+    public void onPlayerInteractBlockSuccessfully(ClientPlayerEntity player, Hand hand, BlockHitResult hitResult, CallbackInfoReturnable<ActionResult> cir) {
+        RandomBlockPlacementClient.getInstance().handleBlockPlacement(player);
     }
 }

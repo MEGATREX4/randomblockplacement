@@ -48,16 +48,6 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 
 	public static void onRandomPlaceKeyPressed() {
 		randomPlacementMode = !randomPlacementMode;
-
-
-//		MinecraftClient client = MinecraftClient.getInstance();
-//		String translationKey = randomPlacementMode
-//				? "randomblockplacement.enabled"
-//				: "randomblockplacement.disabled";
-//
-//		if (client.player != null) {
-//			client.player.sendMessage(Text.translatable(translationKey), true);
-//		}
 	}
 
 
@@ -70,10 +60,11 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 	private static void randomizeHotbarSlot(ClientPlayerEntity player) {
 		int currentSlot = player.getInventory().selectedSlot;
 		int blockCount = 0;
+		int[] blockSlots = new int[9];
 
 		for (int i = 0; i < 9; i++) {
 			if (player.getInventory().getStack(i).getItem() instanceof BlockItem) {
-				blockCount++;
+				blockSlots[blockCount++] = i;
 			}
 		}
 
@@ -81,12 +72,17 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 			return;
 		}
 
-		int randomSlot;
-		do {
-			randomSlot = random.nextInt(9);
-		} while (randomSlot == currentSlot || !(player.getInventory().getStack(randomSlot).getItem() instanceof BlockItem));
+		int probability = 100 / blockCount;
+		int randomValue = random.nextInt(100);
 
-		player.getInventory().selectedSlot = randomSlot;
+		int accumulatedProbability = 0;
+		for (int i = 0; i < blockCount; i++) {
+			accumulatedProbability += probability;
+			if (randomValue < accumulatedProbability) {
+				player.getInventory().selectedSlot = blockSlots[i];
+				break;
+			}
+		}
 	}
 
 	public static RandomBlockPlacementClient getInstance() {
