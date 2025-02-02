@@ -4,11 +4,16 @@
 
 The **Random Block Placement Mod** is a Minecraft mod designed to enhance gameplay by introducing a randomized block placement feature. When activated, this mod will randomly select which block to place from your hotbar, adding an element of unpredictability and excitement to block placement.
 
-## Features
+## Features  
+- **Random block selection** from your hotbar when placing blocks.  
+- **Toggleable mode** using a customizable keybind (default: `R`).  
+- **HUD Indicator** to show when randomization is active.  
+- **Supports all block items** from Vanilla and mods.  
 
-- **Random Block Selection**: Randomly selects a block from your hotbar when placing blocks.
-- **Toggle Mode**: Easily enable or disable the random placement mode using a configurable keybinding.
-- **HUD Display**: Visual feedback on the screen when the random placement mode is active.
+## How to Use  
+1. Press **`R`** to toggle **Random Block Placement Mode**.  
+2. When enabled, every time you place a block, a random block from your hotbar is selected.  
+3. A small icon appears on the HUD when the mode is active.  
 
 ## Installation
 
