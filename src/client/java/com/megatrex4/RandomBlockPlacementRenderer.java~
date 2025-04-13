@@ -1,0 +1,56 @@
+package com.megatrex4;
+
+import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Identifier;
+
+public class RandomBlockPlacementRenderer {
+    private static final Identifier TEXTURE = Identifier.of("randomblockplacement", "textures/gui/rblock.png");
+
+    public static void renderTexture(DrawContext context, int screenWidth, int screenHeight) {
+        MatrixStack matrixStack = context.getMatrices();
+        matrixStack.push();
+
+        MinecraftClient client = MinecraftClient.getInstance();
+        RenderSystem.setShaderTexture(0, TEXTURE);
+
+        VertexConsumerProvider.Immediate vertexConsumerProvider = client.getBufferBuilders().getEntityVertexConsumers();
+        VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RenderLayer.getEntitySolid(TEXTURE));
+
+        int x = 16; // Example x position
+        int y = 16; // Example y position
+        int width = 16; // Example width
+        int height = 16; // Example height
+
+        float r = 1.0F, g = 1.0F, b = 1.0F, a = 1.0F; // Color: white (fully opaque)
+        float normalX = 0.0F, normalY = 0.0F, normalZ = 1.0F; // Normal: pointing towards the viewer
+
+        // Begin drawing the texture with vertices and set default color and normal values
+        vertexConsumer.vertex(matrixStack.peek().getPositionMatrix(), x, y + height, 0.0F)
+                .color(r, g, b, a)
+                .normal(normalX, normalY, normalZ)
+                .texture(0.0F, 1.0F); // Set UV1
+        vertexConsumer.vertex(matrixStack.peek().getPositionMatrix(), x + width, y + height, 0.0F)
+                .color(r, g, b, a)
+                .normal(normalX, normalY, normalZ)
+                .texture(1.0F, 1.0F); // Set UV2
+        vertexConsumer.vertex(matrixStack.peek().getPositionMatrix(), x + width, y, 0.0F)
+                .color(r, g, b, a)
+                .normal(normalX, normalY, normalZ)
+                .texture(1.0F, 0.0F); // Set UV3
+        vertexConsumer.vertex(matrixStack.peek().getPositionMatrix(), x, y, 0.0F)
+                .color(r, g, b, a)
+                .normal(normalX, normalY, normalZ)
+                .texture(0.0F, 0.0F); // Set UV4
+
+        vertexConsumerProvider.draw();
+
+        matrixStack.pop();
+    }
+
+}
