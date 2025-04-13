@@ -50,21 +50,11 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 
 	public static void onRandomPlaceKeyPressed() {
 		randomPlacementMode = !randomPlacementMode;
-
-
-//		MinecraftClient client = MinecraftClient.getInstance();
-//		String translationKey = randomPlacementMode
-//				? "randomblockplacement.enabled"
-//				: "randomblockplacement.disabled";
-//
-//		if (client.player != null) {
-//			client.player.sendMessage(Text.translatable(translationKey), true);
-//		}
 	}
 
 
 	public void handleBlockPlacement(ClientPlayerEntity player) {
-		if (randomPlacementMode && player.getMainHandStack().getItem() instanceof BlockItem) {
+		if (randomPlacementMode) {
 			randomizeHotbarSlot(player);
 		}
 	}
@@ -124,10 +114,5 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 		matrixStack.pop();
 
 		RenderSystem.disableBlend();
-
 	}
-
-
-
-
 }
