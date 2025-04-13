@@ -52,13 +52,13 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 
 
 	public void handleBlockPlacement(ClientPlayerEntity player) {
-		if (randomPlacementMode && player.getMainHandStack().getItem() instanceof BlockItem) {
+		if (randomPlacementMode) {
 			randomizeHotbarSlot(player);
 		}
 	}
 
 	private static void randomizeHotbarSlot(ClientPlayerEntity player) {
-		int currentSlot = player.getInventory().selectedSlot;
+		int currentSlot = player.getInventory().getSelectedSlot();
 		int blockCount = 0;
 		int[] blockSlots = new int[9];
 
@@ -79,7 +79,7 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 		for (int i = 0; i < blockCount; i++) {
 			accumulatedProbability += probability;
 			if (randomValue < accumulatedProbability) {
-				player.getInventory().selectedSlot = blockSlots[i];
+				((PlayerInventoryAccessor) player.getInventory()).setSelectedSlot(blockSlots[i]);
 				break;
 			}
 		}
