@@ -106,7 +106,4 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 				iconSize, iconSize
 		);
 	}
-
-
-
 }
