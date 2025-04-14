@@ -48,32 +48,23 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 
 	public static void onRandomPlaceKeyPressed() {
 		randomPlacementMode = !randomPlacementMode;
-
-
-//		MinecraftClient client = MinecraftClient.getInstance();
-//		String translationKey = randomPlacementMode
-//				? "randomblockplacement.enabled"
-//				: "randomblockplacement.disabled";
-//
-//		if (client.player != null) {
-//			client.player.sendMessage(Text.translatable(translationKey), true);
-//		}
 	}
 
 
 	public void handleBlockPlacement(ClientPlayerEntity player) {
-		if (randomPlacementMode && player.getMainHandStack().getItem() instanceof BlockItem) {
+		if (randomPlacementMode) {
 			randomizeHotbarSlot(player);
 		}
 	}
 
 	private static void randomizeHotbarSlot(ClientPlayerEntity player) {
-		int currentSlot = player.getInventory().selectedSlot;
+		int currentSlot = ((PlayerInventoryAccessor) player.getInventory()).getSelectedSlot();
 		int blockCount = 0;
+		int[] blockSlots = new int[9];
 
 		for (int i = 0; i < 9; i++) {
 			if (player.getInventory().getStack(i).getItem() instanceof BlockItem) {
-				blockCount++;
+				blockSlots[blockCount++] = i;
 			}
 		}
 
@@ -81,12 +72,17 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 			return;
 		}
 
-		int randomSlot;
-		do {
-			randomSlot = random.nextInt(9);
-		} while (randomSlot == currentSlot || !(player.getInventory().getStack(randomSlot).getItem() instanceof BlockItem));
+		int probability = 100 / blockCount;
+		int randomValue = random.nextInt(100);
 
-		player.getInventory().selectedSlot = randomSlot;
+		int accumulatedProbability = 0;
+		for (int i = 0; i < blockCount; i++) {
+			accumulatedProbability += probability;
+			if (randomValue < accumulatedProbability) {
+				((PlayerInventoryAccessor) player.getInventory()).setSelectedSlot(blockSlots[i]);
+				break;
+			}
+		}
 	}
 
 	public static RandomBlockPlacementClient getInstance() {
@@ -99,17 +95,15 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 		int screenHeight = client.getWindow().getScaledHeight();
 
 		int iconSize = 16;
-		int x = (screenWidth - iconSize) / 2; // Center horizontally
-		int y = (screenHeight - iconSize) / 2 - 13; // Slightly above the crosshair
+		int x = (screenWidth - iconSize) / 2;
+		int y = (screenHeight - iconSize) / 2 - 13;
 
-		// Use getGuiTextured for textures
 		drawContext.drawTexture(
-				texture -> RenderLayer.getGuiTextured(ICON_TEXTURE), // Correct RenderLayer
-				ICON_TEXTURE, // Texture identifier
-				x, y,         // Position on screen
-				0.0f, 0.0f,   // Texture coordinates
-				iconSize, iconSize, // Texture width and height
-				iconSize, iconSize  // Actual texture dimensions
+				ICON_TEXTURE,
+				x, y,
+				0, 0,
+				iconSize, iconSize,
+				iconSize, iconSize
 		);
 	}
 
