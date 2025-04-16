@@ -1,5 +1,6 @@
 package com.megatrex4;
 
+import com.megatrex4.mixin.client.PlayerInventoryAccessor;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -60,12 +61,13 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 	}
 
 	private static void randomizeHotbarSlot(ClientPlayerEntity player) {
-		int currentSlot = player.getInventory().selectedSlot;
+		int currentSlot = ((PlayerInventoryAccessor) player.getInventory()).getSelectedSlot();
 		int blockCount = 0;
+		int[] blockSlots = new int[9];
 
 		for (int i = 0; i < 9; i++) {
 			if (player.getInventory().getStack(i).getItem() instanceof BlockItem) {
-				blockCount++;
+				blockSlots[blockCount++] = i;
 			}
 		}
 
@@ -73,12 +75,17 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 			return;
 		}
 
-		int randomSlot;
-		do {
-			randomSlot = random.nextInt(9);
-		} while (randomSlot == currentSlot || !(player.getInventory().getStack(randomSlot).getItem() instanceof BlockItem));
+		int probability = 100 / blockCount;
+		int randomValue = random.nextInt(100);
 
-		player.getInventory().selectedSlot = randomSlot;
+		int accumulatedProbability = 0;
+		for (int i = 0; i < blockCount; i++) {
+			accumulatedProbability += probability;
+			if (randomValue < accumulatedProbability) {
+				((PlayerInventoryAccessor) player.getInventory()).setSelectedSlot(blockSlots[i]);
+				break;
+			}
+		}
 	}
 
 	public static RandomBlockPlacementClient getInstance() {
@@ -90,29 +97,18 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 		int screenWidth = client.getWindow().getScaledWidth();
 		int screenHeight = client.getWindow().getScaledHeight();
 
-
-		MatrixStack matrixStack = drawContext.getMatrices();
-
-		RenderSystem.enableBlend();
-		RenderSystem.defaultBlendFunc();
-
-		matrixStack.push();
-
 		int iconSize = 16;
 		int x = (screenWidth - iconSize) / 2; // Center horizontally
 		int y = (screenHeight - iconSize) / 2 - 13; // Slightly above the crosshair
 
-		// Directly use the Identifier for the texture
+		// Use getGuiTextured for textures
 		drawContext.drawTexture(
-				ICON_TEXTURE,
-				x, y,
-				0, 0,
-				iconSize, iconSize,
-				iconSize, iconSize
+				texture -> RenderLayer.getGuiTextured(ICON_TEXTURE), // Correct RenderLayer
+				ICON_TEXTURE, // Texture identifier
+				x, y,         // Position on screen
+				0.0f, 0.0f,   // Texture coordinates
+				iconSize, iconSize, // Texture width and height
+				iconSize, iconSize  // Actual texture dimensions
 		);
-
-		matrixStack.pop();
-
-		RenderSystem.disableBlend();
 	}
 }
