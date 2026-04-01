@@ -36,7 +36,8 @@
 		"fabricloader": ">=0.16.2",
 		"minecraft": "~26.1",
 		"java": ">=21",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"fzzy_config": "*"
 	},
 	"suggests": {
 		"another-mod": "*"

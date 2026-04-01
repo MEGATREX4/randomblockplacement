@@ -11,11 +11,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@SuppressWarnings("all")
 @Mixin(MultiPlayerGameMode.class)
 public class PlayerInteractBlockMixin {
     @Inject(
-            method = "useItemOn(Lnet/minecraft/client/player/LocalPlayer;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;",
-            at = @At("RETURN")
+            method = "useItemOn",
+            at = @At("RETURN"),
+            cancellable = false
     )
     private void onBlockPlaced(
             LocalPlayer player,
@@ -23,7 +25,6 @@ public class PlayerInteractBlockMixin {
             BlockHitResult hitResult,
             CallbackInfoReturnable<InteractionResult> cir
     ) {
-        // InteractionResult is now an interface in newer versions
         if (cir.getReturnValue() instanceof InteractionResult.Success) {
             RandomBlockPlacementClient.getInstance().handleBlockPlacement(player);
         }

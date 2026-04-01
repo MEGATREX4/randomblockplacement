@@ -1,5 +1,6 @@
 package com.megatrex4;
 
+import com.megatrex4.config.RandomBlockPlacementConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
@@ -57,33 +58,53 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 	}
 
 	public void handleBlockPlacement(LocalPlayer player) {
-		if (randomPlacementMode && player.getMainHandItem().getItem() instanceof BlockItem) {
+		if (randomPlacementMode) {
+			if (!(player.getMainHandItem().getItem() instanceof BlockItem)) {
+				switchToAnyBlockSlot(player);
+				return;
+			}
 			randomizeHotbarSlot(player);
 		}
 	}
 
 	private static void randomizeHotbarSlot(LocalPlayer player) {
-		// Use vanilla's built-in getSelectedSlot()
-		int currentSlot = player.getInventory().getSelectedSlot();
 		int blockCount = 0;
 		int[] blockSlots = new int[9];
 		for (int i = 0; i < 9; i++) {
-			if (player.getInventory().getItem(i).getItem() instanceof BlockItem) {
+			if (player.getInventory().getItem(i).getItem() instanceof BlockItem
+					&& player.getInventory().getItem(i).getCount() > 0) {
 				blockSlots[blockCount++] = i;
 			}
 		}
-		if (blockCount <= 1) {
+
+		if (blockCount == 0) {
 			return;
 		}
+
+		if (blockCount == 1) {
+			player.getInventory().setSelectedSlot(blockSlots[0]);
+			return;
+		}
+
+		// Pick a random block slot
 		int probability = 100 / blockCount;
 		int randomValue = random.nextInt(100);
 		int accumulatedProbability = 0;
 		for (int i = 0; i < blockCount; i++) {
 			accumulatedProbability += probability;
 			if (randomValue < accumulatedProbability) {
-				// Use vanilla's built-in setSelectedSlot()
 				player.getInventory().setSelectedSlot(blockSlots[i]);
 				break;
+			}
+		}
+	}
+
+	private static void switchToAnyBlockSlot(LocalPlayer player) {
+		for (int i = 0; i < 9; i++) {
+			if (player.getInventory().getItem(i).getItem() instanceof BlockItem
+					&& player.getInventory().getItem(i).getCount() > 0) {
+				player.getInventory().setSelectedSlot(i);
+				return;
 			}
 		}
 	}
@@ -94,15 +115,18 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 
 	private void renderIcon(GuiGraphicsExtractor graphics) {
 		Minecraft client = Minecraft.getInstance();
+		RandomBlockPlacementConfig.ClientConfig config = RandomBlockPlacementConfig.CLIENT;
+
 		int screenWidth = client.getWindow().getGuiScaledWidth();
 		int screenHeight = client.getWindow().getGuiScaledHeight();
-		int iconSize = 16;
-		int x = (screenWidth - iconSize) / 2;
-		int y = (screenHeight - iconSize) / 2 - 13;
+		int iconSize = config.iconSize.get();
+
+		int[] pos = config.getIconPosition(screenWidth, screenHeight);
+
 		graphics.blit(
 				RenderPipelines.GUI_TEXTURED,
 				ICON_TEXTURE,
-				x, y,
+				pos[0], pos[1],
 				0.0f, 0.0f,
 				iconSize, iconSize,
 				iconSize, iconSize
