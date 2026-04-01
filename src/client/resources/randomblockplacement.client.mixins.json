@@ -1,16 +1,16 @@
 {
 	"required": true,
 	"package": "com.megatrex4.mixin.client",
-	"compatibilityLevel": "JAVA_21",
+	"compatibilityLevel": "JAVA_25",
 	"client": [
-		"ExampleClientMixin",
-		"PlayerInteractBlockMixin"
-	],
-	"mixins": [
-		"PlayerInteractBlockMixin",
-		"PlayerInventoryAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1
-	}
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	},
+	"mixins": [
+		"PlayerInteractBlockMixin"
+	]
 }

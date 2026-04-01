@@ -1,32 +1,30 @@
 package com.megatrex4.mixin.client;
 
 import com.megatrex4.RandomBlockPlacementClient;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.client.network.ClientPlayerInteractionManager;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.client.multiplayer.MultiPlayerGameMode;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.phys.BlockHitResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(ClientPlayerInteractionManager.class)
+@Mixin(MultiPlayerGameMode.class)
 public class PlayerInteractBlockMixin {
     @Inject(
-        method = "interactBlock",
-        at = @At("RETURN"),
-        cancellable = false
+            method = "useItemOn(Lnet/minecraft/client/player/LocalPlayer;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;",
+            at = @At("RETURN")
     )
     private void onBlockPlaced(
-        ClientPlayerEntity player,
-        Hand hand,
-        BlockHitResult hitResult,
-        CallbackInfoReturnable<ActionResult> cir
+            LocalPlayer player,
+            InteractionHand hand,
+            BlockHitResult hitResult,
+            CallbackInfoReturnable<InteractionResult> cir
     ) {
-        if (cir.getReturnValue() == ActionResult.SUCCESS) {
+        // InteractionResult is now an interface in newer versions
+        if (cir.getReturnValue() instanceof InteractionResult.Success) {
             RandomBlockPlacementClient.getInstance().handleBlockPlacement(player);
         }
     }

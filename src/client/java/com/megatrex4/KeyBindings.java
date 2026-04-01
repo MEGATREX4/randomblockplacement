@@ -1,30 +1,32 @@
 package com.megatrex4;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.option.KeyBinding.Category;
-import net.minecraft.client.util.InputUtil;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.resources.Identifier;
 import org.lwjgl.glfw.GLFW;
-import net.minecraft.util.Identifier;
 
 import static com.megatrex4.RandomBlockPlacement.MOD_ID;
 
 public class KeyBindings {
-    public static KeyBinding randomPlaceKey;
+    public static KeyMapping randomPlaceKey;
 
     public static void registerKeyBindings() {
-        Category category = Category.create(Identifier.of(MOD_ID, "category"));
+        // Create custom category for this mod
+        KeyMapping.Category category = KeyMapping.Category.register(
+                Identifier.withDefaultNamespace(MOD_ID)
+        );
 
-        randomPlaceKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+        // Constructor auto-registers the keybinding
+        randomPlaceKey = new KeyMapping(
                 "key.randomblockplacement.toggle",
-                InputUtil.Type.KEYSYM,
+                InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_R,
                 category
-        ));
+        );
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (randomPlaceKey.wasPressed()) {
+            if (randomPlaceKey.consumeClick()) {
                 RandomBlockPlacementClient.onRandomPlaceKeyPressed();
             }
         });
