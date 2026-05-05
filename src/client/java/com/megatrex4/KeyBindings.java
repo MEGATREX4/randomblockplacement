@@ -2,6 +2,7 @@ package com.megatrex4;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.resources.Identifier;
 import org.lwjgl.glfw.GLFW;
@@ -13,20 +14,22 @@ public class KeyBindings {
 
     public static void registerKeyBindings() {
         // Create custom category for this mod
-        KeyMapping.Category category = KeyMapping.Category.register(
-                Identifier.withDefaultNamespace(MOD_ID)
+        KeyMapping.Category CATEGORY = KeyMapping.Category.register(
+                Identifier.fromNamespaceAndPath(MOD_ID, "keybindings")
         );
 
-        // Constructor auto-registers the keybinding
-        randomPlaceKey = new KeyMapping(
-                "key.randomblockplacement.toggle",
-                InputConstants.Type.KEYSYM,
-                GLFW.GLFW_KEY_R,
-                category
+        // Use KeyMappingHelper to register the keybinding
+        randomPlaceKey = net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper.registerKeyMapping(
+                new KeyMapping(
+                        "key.randomblockplacement.toggle",
+                        InputConstants.Type.KEYSYM,
+                        GLFW.GLFW_KEY_R,
+                        CATEGORY
+                )
         );
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (randomPlaceKey.consumeClick()) {
+            while (randomPlaceKey.consumeClick()) {
                 RandomBlockPlacementClient.onRandomPlaceKeyPressed();
             }
         });
