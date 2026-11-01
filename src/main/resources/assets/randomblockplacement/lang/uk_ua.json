@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "Довжина: %s блоків",
+  "screen.randomblockplacement.gradient.palette": "ПАНЕЛЬ ШВИДКОГО ДОСТУПУ (СЛОТИ 1-9)",
   "key.randomblockplacement.toggle": "Перемкнути режим випадкового розміщення",
-  "key.category.randomblockplacement.keybindings": "Випадкове розміщення блоків"
+  "key.category.randomblockplacement.keybindings": "Випадкове розміщення блоків",
+  "key.randomblockplacement.gradient": "Перемкнути градієнт",
+  "screen.randomblockplacement.gradient.title": "Градієнт блоків",
+  "screen.randomblockplacement.gradient.help": "Перший встановлений блок задає початок градієнта. Слоти 1–9 — це кольори за порядком; решту блоків можна встановлювати в будь-якому порядку. Початкова точка скидається після виходу зі світу.",
+  "screen.randomblockplacement.gradient.axis": "ОРІЄНТАЦІЯ",
+  "screen.randomblockplacement.gradient.axis.horizontal": "Горизонтальна",
+  "screen.randomblockplacement.gradient.axis.vertical": "Вертикальна",
+  "screen.randomblockplacement.gradient.shape": "ФОРМА",
+  "screen.randomblockplacement.gradient.enabled_label": "Увімкнути градієнтне розміщення",
+  "screen.randomblockplacement.gradient.type.linear": "Лінійний",
+  "screen.randomblockplacement.gradient.type.radial": "Радіальний",
+  "screen.randomblockplacement.gradient.type.square": "Квадратний",
+  "screen.randomblockplacement.gradient.dithering_label": "Увімкнути дизеринг",
+  "screen.randomblockplacement.gradient.done": "Готово",
+  "message.randomblockplacement.gradient_active": "Випадкове розміщення блоків недоступне, поки активний режим градієнта.",
+  "message.randomblockplacement.random_active": "Градієнтне розміщення недоступне, поки активний режим випадкового розміщення."
 }

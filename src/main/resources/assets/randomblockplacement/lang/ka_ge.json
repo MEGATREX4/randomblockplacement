@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "სიგრძე: %s ბლოკი",
+  "screen.randomblockplacement.gradient.palette": "სწრაფი ზოლი (სლოტები 1-9)",
   "key.randomblockplacement.toggle": "შემთხვევითი ბლოკების განთავსების რეჟიმის გადართვა",
-  "key.category.randomblockplacement.keybindings": "შემთხვევითი ბლოკების განთავსება"
+  "key.category.randomblockplacement.keybindings": "შემთხვევითი ბლოკების განთავსება",
+  "key.randomblockplacement.gradient": "გრადიენტის ჩართვა/გამორთვა",
+  "screen.randomblockplacement.gradient.title": "ბლოკების გრადიენტი",
+  "screen.randomblockplacement.gradient.help": "პირველი განთავსებული ბლოკი გრადიენტის დასაწყისია. 1–9 სლოტი ფერების თანმიმდევრობაა; დანარჩენი ბლოკები ნებისმიერი რიგით განათავსეთ. სამყაროდან გასვლისას საწყისი წერტილი განულდება.",
+  "screen.randomblockplacement.gradient.axis": "მიმართულება",
+  "screen.randomblockplacement.gradient.axis.horizontal": "ჰორიზონტალური",
+  "screen.randomblockplacement.gradient.axis.vertical": "ვერტიკალური",
+  "screen.randomblockplacement.gradient.shape": "ფორმა",
+  "screen.randomblockplacement.gradient.enabled_label": "გრადიენტით განთავსების ჩართვა",
+  "screen.randomblockplacement.gradient.type.linear": "ხაზოვანი",
+  "screen.randomblockplacement.gradient.type.radial": "რადიალური",
+  "screen.randomblockplacement.gradient.type.square": "კვადრატული",
+  "screen.randomblockplacement.gradient.dithering_label": "დიზერინგის ჩართვა",
+  "screen.randomblockplacement.gradient.done": "მზადაა",
+  "message.randomblockplacement.gradient_active": "შემთხვევითი განთავსება მიუწვდომელია, სანამ გრადიენტის რეჟიმი ჩართულია.",
+  "message.randomblockplacement.random_active": "გრადიენტით განთავსება მიუწვდომელია, სანამ შემთხვევითი რეჟიმი ჩართულია."
 }

@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "Longitud: %s blocs",
+  "screen.randomblockplacement.gradient.palette": "PALÈTA DE DRECERES (ESPAIS 1-9)",
   "key.randomblockplacement.toggle": "Alternar Mode de Col·locació Aleatòria",
-  "key.category.randomblockplacement.keybindings": "Col·locació Aleatòria de Blocs"
+  "key.category.randomblockplacement.keybindings": "Col·locació Aleatòria de Blocs",
+  "key.randomblockplacement.gradient": "Alternar el degradat",
+  "screen.randomblockplacement.gradient.title": "Degradat de blocs",
+  "screen.randomblockplacement.gradient.help": "El primer bloc col·locat marca l'inici del degradat. Les caselles 1-9 són els colors ordenats; pots col·locar la resta de blocs en qualsevol ordre. L'inici es reinicia en sortir del món.",
+  "screen.randomblockplacement.gradient.axis": "ORIENTACIÓ",
+  "screen.randomblockplacement.gradient.axis.horizontal": "Horitzontal",
+  "screen.randomblockplacement.gradient.axis.vertical": "Vertical",
+  "screen.randomblockplacement.gradient.shape": "FORMA",
+  "screen.randomblockplacement.gradient.enabled_label": "Activa la col·locació amb degradat",
+  "screen.randomblockplacement.gradient.type.linear": "Lineal",
+  "screen.randomblockplacement.gradient.type.radial": "Radial",
+  "screen.randomblockplacement.gradient.type.square": "Quadrada",
+  "screen.randomblockplacement.gradient.dithering_label": "Activa el tramat",
+  "screen.randomblockplacement.gradient.done": "Fet",
+  "message.randomblockplacement.gradient_active": "La col·locació aleatòria no està disponible mentre el mode de degradat està actiu.",
+  "message.randomblockplacement.random_active": "La col·locació amb degradat no està disponible mentre el mode aleatori està actiu."
 }

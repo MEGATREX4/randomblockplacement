@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "Długość: %s bloków",
+  "screen.randomblockplacement.gradient.palette": "PASEK SZYBKIEGO DOSTĘPU (MIEJSCA 1-9)",
   "key.randomblockplacement.toggle": "Przełącz tryb losowego rozmieszczania bloków",
-  "key.category.randomblockplacement.keybindings": "Losowe rozmieszczanie bloków"
+  "key.category.randomblockplacement.keybindings": "Losowe rozmieszczanie bloków",
+  "key.randomblockplacement.gradient": "Przełącz gradient",
+  "screen.randomblockplacement.gradient.title": "Gradient bloków",
+  "screen.randomblockplacement.gradient.help": "Pierwszy postawiony blok wyznacza początek gradientu. Sloty 1–9 to uporządkowane kolory; pozostałe bloki możesz stawiać w dowolnej kolejności. Punkt początkowy resetuje się po opuszczeniu świata.",
+  "screen.randomblockplacement.gradient.axis": "ORIENTACJA",
+  "screen.randomblockplacement.gradient.axis.horizontal": "Pozioma",
+  "screen.randomblockplacement.gradient.axis.vertical": "Pionowa",
+  "screen.randomblockplacement.gradient.shape": "KSZTAŁT",
+  "screen.randomblockplacement.gradient.enabled_label": "Włącz stawianie z gradientem",
+  "screen.randomblockplacement.gradient.type.linear": "Liniowy",
+  "screen.randomblockplacement.gradient.type.radial": "Promieniowy",
+  "screen.randomblockplacement.gradient.type.square": "Kwadratowy",
+  "screen.randomblockplacement.gradient.dithering_label": "Włącz dithering",
+  "screen.randomblockplacement.gradient.done": "Gotowe",
+  "message.randomblockplacement.gradient_active": "Losowe stawianie bloków jest niedostępne, gdy aktywny jest tryb gradientu.",
+  "message.randomblockplacement.random_active": "Stawianie z gradientem jest niedostępne, gdy aktywny jest tryb losowy."
 }

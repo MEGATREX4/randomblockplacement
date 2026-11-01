@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "Délka: %s bloků",
+  "screen.randomblockplacement.gradient.palette": "LIŠTA RYCHLÉ VOLBY (SLOTY 1-9)",
   "key.randomblockplacement.toggle": "Přepnout režim náhodného umisťování bloků",
-  "key.category.randomblockplacement.keybindings": "Náhodné umisťování bloků"
+  "key.category.randomblockplacement.keybindings": "Náhodné umisťování bloků",
+  "key.randomblockplacement.gradient": "Přepnout přechod",
+  "screen.randomblockplacement.gradient.title": "Blokový přechod",
+  "screen.randomblockplacement.gradient.help": "První položený blok určí začátek přechodu. Sloty 1–9 jsou seřazené barevné stupně; ostatní bloky lze pokládat v libovolném pořadí. Po opuštění světa se začátek resetuje.",
+  "screen.randomblockplacement.gradient.axis": "ORIENTACE",
+  "screen.randomblockplacement.gradient.axis.horizontal": "Vodorovná",
+  "screen.randomblockplacement.gradient.axis.vertical": "Svislá",
+  "screen.randomblockplacement.gradient.shape": "TVAR",
+  "screen.randomblockplacement.gradient.enabled_label": "Zapnout pokládání s přechodem",
+  "screen.randomblockplacement.gradient.type.linear": "Lineární",
+  "screen.randomblockplacement.gradient.type.radial": "Radiální",
+  "screen.randomblockplacement.gradient.type.square": "Čtvercový",
+  "screen.randomblockplacement.gradient.dithering_label": "Zapnout dithering",
+  "screen.randomblockplacement.gradient.done": "Hotovo",
+  "message.randomblockplacement.gradient_active": "Náhodné pokládání bloků není dostupné, když je aktivní přechod.",
+  "message.randomblockplacement.random_active": "Pokládání s přechodem není dostupné, když je aktivní náhodné pokládání."
 }

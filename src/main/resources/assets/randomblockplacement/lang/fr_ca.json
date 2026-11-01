@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "Longueur : %s blocs",
+  "screen.randomblockplacement.gradient.palette": "BARRE D’ACCÈS RAPIDE (EMPLACEMENTS 1-9)",
   "key.randomblockplacement.toggle": "Basculer le Mode de Placement Aléatoire",
-  "key.category.randomblockplacement.keybindings": "Placement de Blocs Aléatoire"
+  "key.category.randomblockplacement.keybindings": "Placement de Blocs Aléatoire",
+  "key.randomblockplacement.gradient": "Activer/désactiver le dégradé",
+  "screen.randomblockplacement.gradient.title": "Dégradé de blocs",
+  "screen.randomblockplacement.gradient.help": "Le premier bloc posé définit le début du dégradé. Les cases 1 à 9 sont les étapes dans l'ordre; pose les autres blocs dans l'ordre voulu. Le point de départ est réinitialisé en quittant le monde.",
+  "screen.randomblockplacement.gradient.axis": "ORIENTATION",
+  "screen.randomblockplacement.gradient.axis.horizontal": "Horizontale",
+  "screen.randomblockplacement.gradient.axis.vertical": "Verticale",
+  "screen.randomblockplacement.gradient.shape": "FORME",
+  "screen.randomblockplacement.gradient.enabled_label": "Activer le placement en dégradé",
+  "screen.randomblockplacement.gradient.type.linear": "Linéaire",
+  "screen.randomblockplacement.gradient.type.radial": "Radial",
+  "screen.randomblockplacement.gradient.type.square": "Carrée",
+  "screen.randomblockplacement.gradient.dithering_label": "Activer le tramage",
+  "screen.randomblockplacement.gradient.done": "Terminé",
+  "message.randomblockplacement.gradient_active": "Le placement aléatoire n'est pas disponible lorsque le mode dégradé est actif.",
+  "message.randomblockplacement.random_active": "Le placement en dégradé n'est pas disponible lorsque le mode aléatoire est actif."
 }

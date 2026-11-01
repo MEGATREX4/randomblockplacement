@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "Дължина: %s блока",
+  "screen.randomblockplacement.gradient.palette": "ЛЕНТА НА БЪРЗ ДОСТЪП (СЛОТОВЕ 1-9)",
   "key.randomblockplacement.toggle": "Превключване на режим за случайно поставяне на блокове",
-  "key.category.randomblockplacement.keybindings": "Случайно поставяне на блокове"
+  "key.category.randomblockplacement.keybindings": "Случайно поставяне на блокове",
+  "key.randomblockplacement.gradient": "Превключване на градиент",
+  "screen.randomblockplacement.gradient.title": "Блоков градиент",
+  "screen.randomblockplacement.gradient.help": "Първият поставен блок задава началото на градиента. Слотове 1–9 са подредени цветови стъпки; останалите блокове могат да се поставят в произволен ред. Началото се нулира при напускане на света.",
+  "screen.randomblockplacement.gradient.axis": "ОРИЕНТАЦИЯ",
+  "screen.randomblockplacement.gradient.axis.horizontal": "Хоризонтална",
+  "screen.randomblockplacement.gradient.axis.vertical": "Вертикална",
+  "screen.randomblockplacement.gradient.shape": "ФОРМА",
+  "screen.randomblockplacement.gradient.enabled_label": "Включване на градиентното поставяне",
+  "screen.randomblockplacement.gradient.type.linear": "Линеен",
+  "screen.randomblockplacement.gradient.type.radial": "Радиален",
+  "screen.randomblockplacement.gradient.type.square": "Квадратен",
+  "screen.randomblockplacement.gradient.dithering_label": "Включване на дизеринг",
+  "screen.randomblockplacement.gradient.done": "Готово",
+  "message.randomblockplacement.gradient_active": "Случайното поставяне на блокове не е достъпно, докато градиентният режим е включен.",
+  "message.randomblockplacement.random_active": "Градиентното поставяне не е достъпно, докато режимът за случайно поставяне е включен."
 }

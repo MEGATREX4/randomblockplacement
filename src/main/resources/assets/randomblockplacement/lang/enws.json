@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "Length: %s blocks",
+  "screen.randomblockplacement.gradient.palette": "HOTBAR PALETTE (SLOTS 1-9)",
   "key.randomblockplacement.toggle": "Toggle Random Block Placement Mode, Hark!",
-  "key.category.randomblockplacement.keybindings": "Random Block Placement"
+  "key.category.randomblockplacement.keybindings": "Random Block Placement",
+  "key.randomblockplacement.gradient": "Toggle Gradient, Hark!",
+  "screen.randomblockplacement.gradient.title": "Block Gradient",
+  "screen.randomblockplacement.gradient.help": "The first block thou placest marketh the gradient's beginning. Slots 1-9 are ordered stops; place the remaining blocks in any order. The anchor reseteth when thou leavest the world.",
+  "screen.randomblockplacement.gradient.axis": "ORIENTATION",
+  "screen.randomblockplacement.gradient.axis.horizontal": "Horizontal",
+  "screen.randomblockplacement.gradient.axis.vertical": "Vertical",
+  "screen.randomblockplacement.gradient.shape": "SHAPE",
+  "screen.randomblockplacement.gradient.enabled_label": "Enable gradient placement",
+  "screen.randomblockplacement.gradient.type.linear": "Linear",
+  "screen.randomblockplacement.gradient.type.radial": "Radial",
+  "screen.randomblockplacement.gradient.type.square": "Square",
+  "screen.randomblockplacement.gradient.dithering_label": "Enable dithering",
+  "screen.randomblockplacement.gradient.done": "Done",
+  "message.randomblockplacement.gradient_active": "Random block placement may not be used whilst gradient mode is active, good sir!",
+  "message.randomblockplacement.random_active": "Gradient placement may not be used whilst random placement is active, good sir!"
 }

@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "Pini: %s kiwen",
+  "screen.randomblockplacement.gradient.palette": "NASIN POKI (LUKIN 1-9)",
   "key.randomblockplacement.toggle": "ante e nasin pi pali kiwen lon poka ale",
-  "key.category.randomblockplacement.keybindings": "pali kiwen lon poka ale"
+  "key.category.randomblockplacement.keybindings": "pali kiwen lon poka ale",
+  "key.randomblockplacement.gradient": "ante e nasin pi kule",
+  "screen.randomblockplacement.gradient.title": "nasin pi kule kiwen",
+  "screen.randomblockplacement.gradient.help": "kiwen nanpa wan li open pi nasin kule. poki 1-9 li nasin kule lon tenpo; o pali e kiwen ante lon tenpo ale. open li weka tan sina weka tan ma.",
+  "screen.randomblockplacement.gradient.axis": "NASIN",
+  "screen.randomblockplacement.gradient.axis.horizontal": "lon poka",
+  "screen.randomblockplacement.gradient.axis.vertical": "sewi anpa",
+  "screen.randomblockplacement.gradient.shape": "SIJE",
+  "screen.randomblockplacement.gradient.enabled_label": "o open e pali pi nasin kule",
+  "screen.randomblockplacement.gradient.type.linear": "linja",
+  "screen.randomblockplacement.gradient.type.radial": "sike",
+  "screen.randomblockplacement.gradient.type.square": "leko",
+  "screen.randomblockplacement.gradient.dithering_label": "o open e ante lili",
+  "screen.randomblockplacement.gradient.done": "pini",
+  "message.randomblockplacement.gradient_active": "sina ken ala pali kiwen ante lon tenpo pi nasin kule.",
+  "message.randomblockplacement.random_active": "sina ken ala pali kiwen kule lon tenpo pi pali ante."
 }

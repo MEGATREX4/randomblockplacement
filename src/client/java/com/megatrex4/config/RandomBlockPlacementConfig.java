@@ -7,6 +7,7 @@ import me.fzzyhmstrs.fzzy_config.api.RegisterType;
 import me.fzzyhmstrs.fzzy_config.config.Config;
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedFloat;
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedInt;
+import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedBoolean;
 import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedEnum;
 import net.minecraft.resources.Identifier;
 
@@ -18,7 +19,7 @@ public class RandomBlockPlacementConfig {
             ClientConfig::new, RegisterType.CLIENT
     );
 
-    @Version(version = 1)
+    @Version(version = 5)
     public static class ClientConfig extends Config {
 
         public ClientConfig() {
@@ -40,6 +41,20 @@ public class RandomBlockPlacementConfig {
 
         @Comment("Custom Y position (-1.0 is Top, 0.0 is Center, 1.0 is Bottom)")
         public ValidatedFloat customY = new ValidatedFloat(0.0f, 1.0f, -1.0f);
+
+        @Comment("Number of block positions from the gradient start to its final color")
+        public ValidatedInt gradientLength = new ValidatedInt(9, 64, 2);
+
+        @Comment("Spatial mapping used to choose a block from the hotbar palette")
+        public ValidatedEnum<GradientType> gradientType =
+                new ValidatedEnum<>(GradientType.RADIAL);
+
+        @Comment("Axis used to orient the gradient through the build")
+        public ValidatedEnum<GradientAxis> gradientAxis =
+                new ValidatedEnum<>(GradientAxis.HORIZONTAL);
+
+        @Comment("Use deterministic spatial dithering between palette blocks")
+        public ValidatedBoolean gradientDithering = new ValidatedBoolean(false);
 
         public int[] getIconPosition(int screenWidth, int screenHeight) {
             int size = iconSize.get();

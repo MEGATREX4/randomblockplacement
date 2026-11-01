@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "Longitud: %s bloques",
+  "screen.randomblockplacement.gradient.palette": "BARRA RÁPIDA (RANURAS 1-9)",
   "key.randomblockplacement.toggle": "Alternar Modo de Colocación Aleatoria",
-  "key.category.randomblockplacement.keybindings": "Colocación Aleatoria de Bloques"
+  "key.category.randomblockplacement.keybindings": "Colocación Aleatoria de Bloques",
+  "key.randomblockplacement.gradient": "Alternar degradado",
+  "screen.randomblockplacement.gradient.title": "Degradado de bloques",
+  "screen.randomblockplacement.gradient.help": "El primer bloque colocado marca el inicio del degradado. Los espacios 1-9 son los tonos ordenados; colocá el resto en cualquier orden. El punto inicial se reinicia al salir del mundo.",
+  "screen.randomblockplacement.gradient.axis": "ORIENTACIÓN",
+  "screen.randomblockplacement.gradient.axis.horizontal": "Horizontal",
+  "screen.randomblockplacement.gradient.axis.vertical": "Vertical",
+  "screen.randomblockplacement.gradient.shape": "FORMA",
+  "screen.randomblockplacement.gradient.enabled_label": "Activar colocación con degradado",
+  "screen.randomblockplacement.gradient.type.linear": "Lineal",
+  "screen.randomblockplacement.gradient.type.radial": "Radial",
+  "screen.randomblockplacement.gradient.type.square": "Cuadrado",
+  "screen.randomblockplacement.gradient.dithering_label": "Activar tramado",
+  "screen.randomblockplacement.gradient.done": "Listo",
+  "message.randomblockplacement.gradient_active": "No se puede usar la colocación aleatoria mientras está activo el modo degradado.",
+  "message.randomblockplacement.random_active": "No se puede usar la colocación con degradado mientras está activo el modo aleatorio."
 }

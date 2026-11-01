@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "LENFTH: %s BLOCKS",
+  "screen.randomblockplacement.gradient.palette": "HOTBAR PALETTE (SLOTS 1-9)",
   "key.randomblockplacement.toggle": "TOGGL RANDOM BLOK PLAYZ MODE",
-  "key.category.randomblockplacement.keybindings": "Random Blok Playz"
+  "key.category.randomblockplacement.keybindings": "Random Blok Playz",
+  "key.randomblockplacement.gradient": "TOGGL GRADIENT",
+  "screen.randomblockplacement.gradient.title": "BLOK GRADIENT",
+  "screen.randomblockplacement.gradient.help": "FURST BLOK U PLACE SETZ DA START. SLOTS 1-9 R ORDERD STOPS; PLACE DA REST ANY ORDER. ANCHOR RESETZ WHEN U LEAV DA WORLD.",
+  "screen.randomblockplacement.gradient.axis": "DIRECSHUN",
+  "screen.randomblockplacement.gradient.axis.horizontal": "SIDEWAYS",
+  "screen.randomblockplacement.gradient.axis.vertical": "UP/DOWN",
+  "screen.randomblockplacement.gradient.shape": "SHAPE",
+  "screen.randomblockplacement.gradient.enabled_label": "ENABLE GRADIENT PLACIN",
+  "screen.randomblockplacement.gradient.type.linear": "LINER",
+  "screen.randomblockplacement.gradient.type.radial": "RADIAL",
+  "screen.randomblockplacement.gradient.type.square": "SQUAR",
+  "screen.randomblockplacement.gradient.dithering_label": "ENABLE DITHERIN",
+  "screen.randomblockplacement.gradient.done": "DONE",
+  "message.randomblockplacement.gradient_active": "RANDOM BLOK PLACIN NOT AVAILABL WHILE GRADIENT MODE IS ON.",
+  "message.randomblockplacement.random_active": "GRADIENT PLACIN NOT AVAILABL WHILE RANDOM MODE IS ON."
 }

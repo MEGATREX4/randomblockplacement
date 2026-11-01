@@ -3,6 +3,7 @@ package com.megatrex4;
 import com.megatrex4.config.RandomBlockPlacementConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
 import net.minecraft.client.Minecraft;
@@ -10,6 +11,7 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 
 import java.util.Random;
@@ -18,17 +20,24 @@ import static com.megatrex4.RandomBlockPlacement.MOD_ID;
 
 public class RandomBlockPlacementClient implements ClientModInitializer {
 	private static boolean randomPlacementMode = false;
+	private static boolean gradientPlacementMode = false;
 	private static final Random random = new Random();
 	private boolean wasRightClicking = false;
 	private static final RandomBlockPlacementClient INSTANCE = new RandomBlockPlacementClient();
 	private static final Identifier ICON_TEXTURE = Identifier.parse(MOD_ID + ":textures/gui/rblock.png");
+	private static final Identifier GRADIENT_ICON_TEXTURE = Identifier.parse(MOD_ID + ":textures/gui/gradient.png");
 	private static final Identifier ICON_LAYER_ID = Identifier.parse(MOD_ID + ":random_icon");
 
 	@Override
 	public void onInitializeClient() {
 		KeyBindings.registerKeyBindings();
+		ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> resetSessionModes());
+		ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> resetSessionModes());
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			if (client.player == null) {
+				GradientPlacement.reset();
+			}
 			if (client.player != null && client.gui.screen() == null) {
 				boolean isRightClicking = client.options.keyUse.isDown();
 				boolean isPlacingBlock = isRightClicking && !wasRightClicking;
@@ -46,15 +55,53 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 				VanillaHudElements.CROSSHAIR,
 				ICON_LAYER_ID,
 				(graphics, deltaTracker) -> {
-					if (randomPlacementMode) {
+					if (randomPlacementMode || gradientPlacementMode) {
 						renderIcon(graphics);
 					}
 				}
 		);
 	}
 
-	public static void onRandomPlaceKeyPressed() {
+	public static void onRandomPlaceKeyPressed(LocalPlayer player) {
+		if (!randomPlacementMode && gradientPlacementMode) {
+			notifyModeConflict(player, "message.randomblockplacement.gradient_active");
+			return;
+		}
 		randomPlacementMode = !randomPlacementMode;
+	}
+
+	public static boolean setGradientEnabled(boolean enabled, LocalPlayer player) {
+		if (enabled && randomPlacementMode) {
+			notifyModeConflict(player, "message.randomblockplacement.random_active");
+			return false;
+		}
+		if (gradientPlacementMode != enabled) {
+			gradientPlacementMode = enabled;
+			if (!enabled) {
+				GradientPlacement.reset();
+			}
+		}
+		return true;
+	}
+
+	public static void toggleGradientPlacementMode(LocalPlayer player) {
+		setGradientEnabled(!gradientPlacementMode, player);
+	}
+
+	public static boolean isGradientPlacementMode() {
+		return gradientPlacementMode;
+	}
+
+	private static void resetSessionModes() {
+		randomPlacementMode = false;
+		gradientPlacementMode = false;
+		GradientPlacement.reset();
+	}
+
+	private static void notifyModeConflict(LocalPlayer player, String translationKey) {
+		if (player != null) {
+			player.sendOverlayMessage(Component.translatable(translationKey));
+		}
 	}
 
 	public void handleBlockPlacement(LocalPlayer player) {
@@ -125,7 +172,7 @@ public class RandomBlockPlacementClient implements ClientModInitializer {
 
 		graphics.blit(
 				RenderPipelines.GUI_TEXTURED,
-				ICON_TEXTURE,
+				gradientPlacementMode ? GRADIENT_ICON_TEXTURE : ICON_TEXTURE,
 				pos[0], pos[1],
 				0.0f, 0.0f,
 				iconSize, iconSize,

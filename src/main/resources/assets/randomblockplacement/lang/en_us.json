@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "Length: %s blocks",
+  "screen.randomblockplacement.gradient.palette": "HOTBAR PALETTE (SLOTS 1-9)",
   "key.randomblockplacement.toggle": "Toggle Random Placement Mode",
-  "key.category.randomblockplacement.keybindings": "Random Block Placement"
+  "key.randomblockplacement.gradient": "Toggle Gradient",
+  "key.category.randomblockplacement.keybindings": "Random Block Placement",
+  "screen.randomblockplacement.gradient.title": "Block Gradient",
+  "screen.randomblockplacement.gradient.help": "The first placed block anchors the gradient. Non-empty block items in hotbar slots 1-9 form an ordered palette, spread across the chosen total length (including the anchor). Place blocks in any order; positions beyond the length use the final palette block. The anchor resets when you leave the world.",
+  "screen.randomblockplacement.gradient.axis": "ORIENTATION",
+  "screen.randomblockplacement.gradient.axis.horizontal": "Horizontal",
+  "screen.randomblockplacement.gradient.axis.vertical": "Vertical",
+  "screen.randomblockplacement.gradient.shape": "SHAPE",
+  "screen.randomblockplacement.gradient.enabled_label": "Enable gradient placement",
+  "screen.randomblockplacement.gradient.type.linear": "Linear",
+  "screen.randomblockplacement.gradient.type.radial": "Radial",
+  "screen.randomblockplacement.gradient.type.square": "Square",
+  "screen.randomblockplacement.gradient.dithering_label": "Enable dithering",
+  "screen.randomblockplacement.gradient.done": "Done",
+  "message.randomblockplacement.gradient_active": "Random block placement is unavailable while gradient mode is active.",
+  "message.randomblockplacement.random_active": "Gradient placement is unavailable while random placement mode is active."
 }

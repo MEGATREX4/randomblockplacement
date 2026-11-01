@@ -1,4 +1,21 @@
 {
+  "screen.randomblockplacement.gradient.length": "skcolb %s :htgneL",
+  "screen.randomblockplacement.gradient.palette": ")9-1 STOLS( ETTELAP RABTOH",
   "key.randomblockplacement.toggle": "ǝpoW ʇuǝɯǝɔɐlԀ ʞɔolq ɯopuɐɹ ǝlƃƃoꞱ",
-  "key.category.randomblockplacement.keybindings": "ʇuǝɯǝɔɐlԀ ʞɔolq ɯopuɐɹ"
+  "key.category.randomblockplacement.keybindings": "ʇuǝɯǝɔɐlԀ ʞɔolq ɯopuɐɹ",
+  "key.randomblockplacement.gradient": "ʇuǝᴉpɐɹפ ǝlƃƃoꞱ",
+  "screen.randomblockplacement.gradient.title": "ʇuǝᴉpɐɹפ ʞɔolԐ",
+  "screen.randomblockplacement.gradient.help": "ʇuǝᴉpɐɹפ ǝɥʇ sʇɹɐʇs ʇsɐlԁ noʎ ʞɔolq ʇsɹᴉℲ. sdoʇs pǝɹǝpɹo ǝɹɐ 9-1 sʇolS; ɹǝpɹo ʎuɐ uᴉ ʇsǝɹ ǝɥʇ ǝɔɐlԁ. plɹoʍ ǝɥʇ ǝʌɐǝl noʎ uǝɥʍ sǝʇsǝɹ ɹoɥɔuɐ ǝɥ⊥.",
+  "screen.randomblockplacement.gradient.axis": "NOIƎꓕAꓤIƎNO",
+  "screen.randomblockplacement.gradient.axis.horizontal": "lɐʇuoziɹoH",
+  "screen.randomblockplacement.gradient.axis.vertical": "lɐɔᴉʇɹǝΛ",
+  "screen.randomblockplacement.gradient.shape": "ƎԀAHS",
+  "screen.randomblockplacement.gradient.enabled_label": "ǝɔɐlԁ ʇuǝᴉpɐɹפ ǝlqɐuƎ",
+  "screen.randomblockplacement.gradient.type.linear": "ɹɐǝuᴉꓶ",
+  "screen.randomblockplacement.gradient.type.radial": "lɐᴉpɐꓤ",
+  "screen.randomblockplacement.gradient.type.square": "ǝɹɐnnbS",
+  "screen.randomblockplacement.gradient.dithering_label": "ƃuᴉɹǝɥʇᴉp ǝlqɐuƎ",
+  "screen.randomblockplacement.gradient.done": "ǝuoᗡ",
+  "message.randomblockplacement.gradient_active": ".ǝʌᴉʇɔɐ sᴉ ǝpoɯ ʇuǝᴉpɐɹפ ǝlᴉɥʍ ǝlqɐlᴉɐʌɐ ʇou sᴉ ǝɔɐlԁ ʞɔolq ɯopuɐꓤ",
+  "message.randomblockplacement.random_active": ".ǝʌᴉʇɔɐ sᴉ ǝɔɐlԁ ɯopuɐɹ ǝlᴉɥʍ ǝlqɐlᴉɐʌɐ ʇou sᴉ ǝɔɐlԁ ʇuǝᴉpɐɹפ"
 }
